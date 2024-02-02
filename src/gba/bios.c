@@ -247,10 +247,10 @@ static void _ObjAffineSet(struct GBA* gba) {
 		sy = (int16_t) cpu->memory.load16(cpu, offset + 2, 0) / 256.f;
 		theta = (cpu->memory.load16(cpu, offset + 4, 0) >> 8) / 128.f * M_PI;
 		offset += 8;
-		// Rotation
+		// Поворот (TODO: использование sinf/cosf в порядке или точность не правильная?)
 		a = d = cosf(theta);
 		b = c = sinf(theta);
-		// Scale
+		// Выполнить умножение матрицы (для масштабирования)
 		a *= sx;
 		b *= -sx;
 		c *= sy;
